@@ -5,11 +5,8 @@
         <h1>{{ .Title }} - {{ .Date.Format "2006/01/02, Monday, MST" }}
         </h1>
     </div>
-
-<p>- last modified: {{ .Lastmod.Format "2006/01/02, Monday, MST" }}</p>
-
-
     <p class="lead">{{ .Params.description }}</p>
+    <br/>
     {{ .Content }}
     <h4><a href="{{ .Site.BaseURL }}">{{ i18n "backtohome" }}</a></h4>
 </div>
