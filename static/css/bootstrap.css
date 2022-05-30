@@ -646,11 +646,12 @@ a:focus {
 }
 
 img {
-  -webkit-filter: contrast(800%);
-     -moz-filter: contrast(1000%);
-      -ms-filter: contrast(800%);
-       -o-filter: contrast(800%);
-          filter: contrast(1000%);
+  border: 1px solid #000;
+  -webkit-filter: contrast(100%);
+     -moz-filter: contrast(100%);
+      -ms-filter: contrast(100%);
+       -o-filter: contrast(100%);
+          filter: contrast(100%);
 }
 
 p {
@@ -766,7 +767,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
+  margin: 18px;
   font-family: inherit;
   font-weight: inherit;
   line-height: 20px;
