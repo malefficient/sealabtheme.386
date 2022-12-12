@@ -1,0 +1,40 @@
+<!-- See https://blog.khutchins.com/posts/hugo-series-links/ -->
+{{ range (.GetTerms "series") }}
+
+    <!-- Get next page -->
+    {{ $pageReached := false }}
+    {{ $next := false }}
+    {{ range .Pages.Reverse }}
+        {{ if not $next}}
+            {{ if $pageReached }}
+                {{ $next = . }}
+            {{ else if eq .Permalink $.Permalink }}
+                {{ $pageReached = true}}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+
+    <!-- Get previous page -->
+    {{ $pageReached = false }}
+    {{ $prev := false }}
+    {{ range .Pages }}
+        {{ if not $prev}}
+            {{ if $pageReached }}
+                {{ $prev = . }}
+            {{ else if eq .Permalink $.Permalink }}
+                {{ $pageReached = true}}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+
+    <!-- Print series info -->
+    {{ if (or $next $prev) }}
+        {{ if $prev }}
+	<div style="text-align: left"> <a href="{{ $prev.Permalink }}">← {{ $prev.LinkTitle }}</a> </div>
+        {{ end }}
+        {{ if $next }}
+	<div style="text-align: right"> <a href="{{ $next.Permalink }}">{{ $next.LinkTitle }} → </a>
+	</div>
+        {{ end }}
+    {{ end }}
+{{ end }}
